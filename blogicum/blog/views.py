@@ -44,24 +44,22 @@ posts = [
 ]
 
 
+posts_dict = {post["id"]: post for post in posts}
+
+
 def index(request):
-
     context = {"posts": posts}
-
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
-
-    post = next((post for post in posts if post["id"] == id), None)
+    
+    post = posts_dict.get(id)
 
     context = {"post": post}
-
     return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
-
     context = {'category_slug': category_slug}
-
     return render(request, 'blog/category.html', context)
