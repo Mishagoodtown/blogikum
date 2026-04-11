@@ -53,7 +53,6 @@ def index(request):
 
 
 def post_detail(request, id):
-    
     post = posts_dict.get(id)
 
     context = {"post": post}
